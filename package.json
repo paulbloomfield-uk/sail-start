@@ -1,6 +1,6 @@
 {
   "name": "sail-start",
-  "version": "0.1.0",
+  "version": "0.1.0-dev",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -9,7 +9,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.8.2",
+    "@mdi/font": "^3.6.95",
     "core-js": "^2.6.5",
     "roboto-fontface": "*",
     "vue": "^2.6.10",

@@ -3,19 +3,20 @@
     <v-navigation-drawer
       v-model="drawer"
       app
+      clipped
     >
       <v-list dense>
-        <v-list-item @click="">
+        <v-list-item @click="alert">
           <v-list-item-action>
-            <v-icon>home</v-icon>
+            <v-icon>{{ $icons.home }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item @click="">
+        <v-list-item @click="alert">
           <v-list-item-action>
-            <v-icon>contact_mail</v-icon>
+            <v-icon>{{ $icons.email }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Contact</v-list-item-title>
@@ -24,10 +25,24 @@
       </v-list>
     </v-navigation-drawer>
 
+    <v-system-bar
+      app
+      xcolor="indigo"
+      xdark
+      fixed
+      clipped-left
+    >
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <!-- v-toolbar-title>Application</v-toolbar-title -->
+      {{ message }}
+    </v-system-bar>
+
     <v-app-bar
       app
-      color="indigo"
-      dark
+      xcolor="indigo"
+      xdark
+      fixed
+      clipped-left
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>Application</v-toolbar-title>
@@ -38,42 +53,7 @@
         class="fill-height"
         fluid
       >
-        <v-row
-          align="center"
-          justify="center"
-        >
-          <v-col class="text-center">
-            <v-tooltip left>
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  :href="source"
-                  icon
-                  large
-                  target="_blank"
-                  v-on="on"
-                >
-                  <v-icon large>mdi-code-tags</v-icon>
-                </v-btn>
-              </template>
-              <span>Source</span>
-            </v-tooltip>
-
-            <v-tooltip right>
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  icon
-                  large
-                  href="https://codepen.io/johnjleider/pen/zgxeLQ"
-                  target="_blank"
-                  v-on="on"
-                >
-                  <v-icon large>mdi-codepen</v-icon>
-                </v-btn>
-              </template>
-              <span>Codepen</span>
-            </v-tooltip>
-          </v-col>
-        </v-row>
+        Hello World!
       </v-container>
     </v-content>
     <v-footer
@@ -92,6 +72,12 @@ export default {
   },
   data: () => ({
     drawer: null,
+    message: '',
   }),
+  methods: {
+    alert(ev,e) {
+      this.message=(ev.target.innerText);
+    },
+  },
 };
 </script>
